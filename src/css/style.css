@@ -1,0 +1,102 @@
+body{
+background:#efefef;
+font-family: 'Nunito', sans-serif;
+}
+
+a{
+    cursor: pointer;
+}
+
+.header{
+    background:#4633af;
+    padding-top:10px;
+    padding-bottom:10px;
+    -webkit-box-shadow: 0px 8px 15px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 8px 15px -1px rgba(0,0,0,0.75);
+box-shadow: 0px 8px 15px -1px rgba(0,0,0,0.75);
+}
+
+.top-icon {
+	color: #fed858;
+	display: block;
+	padding-top: 20px;
+	padding-right: 5px;
+    text-decoration: none;
+}
+
+.top-icon:hover{
+    color:#fff;
+}
+
+.btn-dash{
+background:#fff;
+padding:20px;
+    -webkit-box-shadow: 0px 0px 39px -1px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px 0px 39px -1px rgba(0,0,0,0.25);
+box-shadow: 0px 0px 39px -1px rgba(0,0,0,0.25);
+display: block;
+border-radius:15px;
+margin-right:20px;
+text-decoration: none;
+font-weight: bold;
+color:#222;
+border:2px solid #fff;
+}
+
+.btn-dash:hover{
+    box-shadow:none;
+    border:2px solid #4633af;
+}
+
+.btn-back{
+    background:#4633af;
+    color:#fff;
+}
+
+.btn-back:hover{
+    background:#3e2e9b;
+    color:#fff;
+}
+
+.btn-save{
+    background:#3cb025;
+    color:#fff;
+}
+
+.btn-save:hover{
+    background:#359821;
+    color:#fff;
+}
+
+.btn-cancel{
+    background:#7d7d7d;
+    color:#fff;
+}
+
+.btn-cancel:hover{
+    background:#666666;
+    color:#fff;
+}
+
+.shadowbox{
+    background:#fff;
+    -webkit-box-shadow: 0px 0px 39px -1px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px 0px 39px -1px rgba(0,0,0,0.25);
+box-shadow: 0px 0px 39px -1px rgba(0,0,0,0.25);
+margin-top:25px;
+padding:15px;
+border-radius:10px;
+}
+
+.shadowbox-head{
+    border-bottom:2px solid #4633af;
+}
+
+h2{
+    font-weight: 600;
+}
+
+.shadowbox-body{
+    padding-top:20px;
+    padding-bottom:20px;
+}
