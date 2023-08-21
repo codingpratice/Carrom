@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import {
   faPen,
+  faArrowRight,
   faTrashAlt,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
@@ -11,9 +15,12 @@ import { Link } from "react-router-dom";
 import "./css/style.css";
 
 export function Winners() {
-  const [games, setGames] = useState([]);
+  const [gameList, setGameList] = useState([]);
   const [lastDoc, setLastDoc] = useState("");
   const [hasMore, setHasMore] = useState(true);
+
+  //   const history = useHistory();
+  const navigate = useNavigate();
 
   const pageSize = 10;
 
@@ -23,11 +30,11 @@ export function Winners() {
 
   const fetchGames = async () => {
     const response = await fetch(
-      `https://us-central1-carrom-game-99289.cloudfunctions.net/app/games?limit=${pageSize}&startAfter=${lastDoc}`
+      `https://us-central1-carrom-game-99289.cloudfunctions.net/Winners/list?limit=${pageSize}&startAfter=${lastDoc}`
     );
     const data = await response.json();
     if (data.length > 0) {
-      setGames([...games, ...data]);
+      setGameList([...gameList, ...data]);
       setLastDoc(data[data.length - 1].id);
     }
     if (data.length < pageSize) {
@@ -40,6 +47,14 @@ export function Winners() {
       fetchGames();
     }
   };
+
+  //   function handleClick(id){
+  //     console.log("hi", id);
+  //     // history.push("/winnerselection", { id });
+  //     // navigate('/', { id });
+  //     // `/info/${characterDetail.id}
+  //     navigate( `/home/winners/${id}`);
+  //   }
 
   return (
     <div className="container">
@@ -72,17 +87,24 @@ export function Winners() {
                       </tr>
                     </thead>
                     <tbody>
-                      {games.map((game, index) => (
+                      {gameList.map((game, index) => (
                         <tr key={game.id}>
                           <td>{index + 1}</td>
                           <td>{game.id}</td>
                           <td>{game["strike-cost"]}</td>
                           <td>{game["number-winners"]}</td>
                           <td>{game["total-prize"]}</td>
+                          {/* <td><button onClick={() => handleClick(game.id)}>Go</button></td> */}
+
                           <td className="text-center">
-                            <a href="#" className="text-primary">
-                              <FontAwesomeIcon icon={faPen} />
-                            </a>
+                            <Link
+                              to="/home/winners"
+                              className="btn btn-back btn-sm"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                            >
+                              <FontAwesomeIcon icon={faArrowRight} size="lg" />
+                            </Link>
                           </td>
                         </tr>
                       ))}

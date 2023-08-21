@@ -14,7 +14,7 @@ export const UserList = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
 
-  const pageSize = 10; // Specify your page size here
+  const pageSize = 10; 
 
   useEffect(() => {
     fetchUsers();
