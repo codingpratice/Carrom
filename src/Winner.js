@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+<<<<<<< HEAD
 // import { useHistory } from "react-router-dom";
+=======
+>>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -19,7 +22,10 @@ export function Winners() {
   const [lastDoc, setLastDoc] = useState("");
   const [hasMore, setHasMore] = useState(true);
 
+<<<<<<< HEAD
   //   const history = useHistory();
+=======
+>>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
   const navigate = useNavigate();
 
   const pageSize = 10;
@@ -48,6 +54,7 @@ export function Winners() {
     }
   };
 
+<<<<<<< HEAD
   //   function handleClick(id){
   //     console.log("hi", id);
   //     // history.push("/winnerselection", { id });
@@ -55,6 +62,12 @@ export function Winners() {
   //     // `/info/${characterDetail.id}
   //     navigate( `/home/winners/${id}`);
   //   }
+=======
+    function handleClick(id){
+      // console.log("hi", id);
+      navigate( `/home/winners/${id}`);
+    }
+>>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
 
   return (
     <div className="container">
@@ -94,11 +107,17 @@ export function Winners() {
                           <td>{game["strike-cost"]}</td>
                           <td>{game["number-winners"]}</td>
                           <td>{game["total-prize"]}</td>
+<<<<<<< HEAD
                           {/* <td><button onClick={() => handleClick(game.id)}>Go</button></td> */}
 
                           <td className="text-center">
                             <Link
                               to="/home/winners"
+=======
+                          <td className="text-center">
+                            <Link onClick={() => handleClick(game.id)}
+                              to={`/home/winners/${game.id}`}
+>>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
                               className="btn btn-back btn-sm"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
