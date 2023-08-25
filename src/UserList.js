@@ -14,11 +14,22 @@ export const UserList = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
 
-  const pageSize = 10; 
+  const pageSize = 10;
 
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  const deleteUser = async (userId) => {
+    console.log(userId,"userid")
+    // try {
+    //   await axios.delete(`YOUR_API_ENDPOINT_TO_DELETE_USER/${userId}`);
+    //   setUsers(users.filter(user => user.phoneno !== userId));
+    // } catch (error) {
+    //   console.error("Error deleting user:", error);
+    // }
+  };
+  
 
   const openEditModal = (user) => {
     setEditingUser(user);
@@ -104,7 +115,7 @@ export const UserList = () => {
                     </thead>
                     <tbody>
                       {users.map((user, index) => (
-                        <tr key={user.id}>
+                        <tr key={index}>
                           <td>{index + 1}</td>
                           <td>{user.username}</td>
                           <td>{user.address}</td>
@@ -124,7 +135,14 @@ export const UserList = () => {
                             </a>
                           </td>
                           <td className="text-center">
-                            <a href="#" className="text-danger">
+                            <a
+                              href="#"
+                              className="text-danger"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                deleteUser(user.phoneno);
+                              }}
+                            >
                               <FontAwesomeIcon icon={faTrashAlt} />
                             </a>
                           </td>
@@ -146,6 +164,7 @@ export const UserList = () => {
         showModal={showModal}
         editingUser={editingUser}
         closeEditModal={closeEditModal}
+        fetchUsers={fetchUsers}
       />
     </div>
   );

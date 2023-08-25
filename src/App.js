@@ -42,7 +42,7 @@ function AuthenticatedApp() {
         <Route path="userlist" element={<UserList />} />
         <Route path="createUsers" element={<NewUser />} />
         <Route path="winnerselection" element={<Winners/>} />
-        <Route path="winners" element={<WinnerList/>} />
+        <Route path="winners/:id" element={<WinnerList/>} />
       </Routes>
     </div>
   );

@@ -3,13 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const UserModal = ({ showModal, editingUser, closeEditModal }) => {
+const UserModal = ({ showModal, editingUser, fetchUsers, closeEditModal }) => {
   const [userName, setUserName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
 
- 
   useEffect(() => {
     if (editingUser) {
       setUserName(editingUser.username);
@@ -35,10 +34,13 @@ const UserModal = ({ showModal, editingUser, closeEditModal }) => {
           },
         }
       );
+      console.log("username", userName);
 
       const data = response.data;
-      console.log(data);
+      console.log("data", data);
+      fetchUsers();
       closeEditModal();
+      
     } catch (error) {
       console.error("An error occurred", error);
     }
@@ -107,6 +109,7 @@ const UserModal = ({ showModal, editingUser, closeEditModal }) => {
                   id="contact-no"
                   placeholder=""
                   value={contactNumber}
+                  disabled
                   onChange={(e) => setContactNumber(e.target.value)}
                 />
               </div>
