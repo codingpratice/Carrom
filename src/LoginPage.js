@@ -16,9 +16,10 @@ const LoginPage = () => {
     try {
       const response = await axios.post('https://us-central1-carrom-game-99289.cloudfunctions.net/authApi', { username, password });
 
-      if (response.data.token) { // replace 'token' with the actual property name in the response
+      if (response.data.token) {
         localStorage.setItem('authToken', response.data.token);
         navigate('/home');
+        console.log(response.data)
       } else {
         setError('Username or password is incorrect');
       }

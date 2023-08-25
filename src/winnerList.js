@@ -1,49 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./css/style.css";
-<<<<<<< HEAD
-
-export const WinnerList = () => {
-  // For demonstration, I'm creating a sample list. You can replace this with your actual data.
-  const games = [
-    { id: 1, name: "John", point: 100 },
-    { id: 2, name: "Jane", point: 80 },
-    { id: 3, name: "Doe", point: 60 },
-  ];
-
-  const [checkedItems, setCheckedItems] = useState([]);
-  const [winnerList, setWinnerList] = useState([]);
-
-  useEffect(() => {
-    const filteredGames = games.filter((game) => checkedItems.includes(game.id));
-    setWinnerList(filteredGames);
-  }, [checkedItems]);
-
-  const moveItem = (index, direction) => {
-    if (index >= 0 && index < winnerList.length) {
-      const newWinnerList = [...winnerList];
-      const temp = newWinnerList[index];
-      newWinnerList[index] = newWinnerList[index + direction];
-      newWinnerList[index + direction] = temp;
-      setWinnerList(newWinnerList);
-    }
-  };
-=======
 import {useParams} from 'react-router-dom';
 
 export const WinnerList = () => {
-  // For demonstration, I'm creating a sample list. You can replace this with your actual data.
-  // const games = [
-  //   { id: 1, name: "John", point: 100 },
-  //   { id: 2, name: "Jane", point: 80 },
-  //   { id: 3, name: "Doe", point: 60 },
-  // ];
-
+ 
   const [checkedItems, setCheckedItems] = useState([]);
   const [winnerList, setWinnerList] = useState([]);
   const [games, setGames] = useState([]);
 
   const params = useParams();
-  // console.log(params.id);
+  
 
   useEffect(() => {
     fetchWinner();
@@ -91,7 +57,6 @@ export const WinnerList = () => {
     }
   };
   
->>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
 
   return (
     <div className="container">
@@ -118,19 +83,6 @@ export const WinnerList = () => {
                       </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
-                      {games.map((game, index) => (
-                        <tr key={game.id}>
-                          <td>
-                            <input
-                              type="checkbox"
-                              checked={checkedItems.includes(game.id)}
-                              onChange={() =>
-                                setCheckedItems((prevCheckedItems) =>
-                                  prevCheckedItems.includes(game.id)
-                                    ? prevCheckedItems.filter((item) => item !== game.id)
-                                    : [...prevCheckedItems, game.id]
-=======
                       {Object.keys(games).map((key, index) => (
                         <tr key={key}>
                           <td>
@@ -142,18 +94,12 @@ export const WinnerList = () => {
                                   prevCheckedItems.includes(key)
                                     ? prevCheckedItems.filter((item) => item !== key)
                                     : [...prevCheckedItems, key]
->>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
                                 )
                               }
                             />
                           </td>
-<<<<<<< HEAD
-                          <td>{game.name}</td>
-                          <td>{game.point}</td>
-=======
                           <td>{key}</td>
                           <td>{games[key]}</td>
->>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
                         </tr>
                       ))}
                     </tbody>
@@ -186,17 +132,10 @@ export const WinnerList = () => {
                       </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
-                      {winnerList.map((game, index) => (
-                        <tr key={game.id}>
-                          <td>{game.name}</td>
-                          <td>{game.point}</td>
-=======
                       {Object.keys(winnerList).map((key, index) => (
                         <tr key={key}>
                           <td>{key}</td>
                           <td>{winnerList[key]}</td>
->>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
                           <td>
                             {index > 0 && (
                               <button
@@ -205,13 +144,8 @@ export const WinnerList = () => {
                               >
                                 Up
                               </button>
-<<<<<<< HEAD
-                            )}
-                            {index < winnerList.length - 1 && (
-=======
                             )} {" "}
                             {index < Object.keys(winnerList).length - 1 && (
->>>>>>> 1dc4c000aebab7fadf01908f45a4c55d17ef2e1f
                               <button
                                 onClick={() => moveItem(index, 1)}
                                 className="btn btn-sm btn-outline-primary"

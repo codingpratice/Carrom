@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import logo from './images/logo.png';
 
 function Header() {
+    const handleLogout=()=>{
+         localStorage.removeItem('authToken');
+      }
     return (
         <div className="container-fluid header">
             <div className="row">
@@ -20,7 +23,7 @@ function Header() {
                                 </Link>
                             </li>
                             <li className="list-inline-item">
-                                <Link to="/login" className="top-icon">
+                                <Link onClick={handleLogout} className="top-icon">
                                     <i className="fa-solid fa-arrow-right-from-bracket fa-xl"></i> Logout
                                 </Link>
                             </li>

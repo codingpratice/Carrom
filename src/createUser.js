@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHandPointLeft, faSave, faBan } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHandPointLeft,
+  faSave,
+  faBan,
+} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 export const NewUser = () => {
@@ -14,6 +18,16 @@ export const NewUser = () => {
   const [message, setMessage] = useState("");
   const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [cardType, setCardType] = useState("");
+
+  const clearFields = () => {
+    setUserName("");
+    setEmail("");
+    setAddress("");
+    setPinCode("");
+    setContactNumber("");
+    setKYCApproved(null);
+    setCardType("");
+  };
 
   const saveUser = async () => {
     try {
@@ -38,10 +52,12 @@ export const NewUser = () => {
       const data = response.data;
       console.log(data);
 
-      if (response.status === 200 && data.success) {
+      if (response.status === 200 ) {
         setMessage("User successfully added.");
+        clearFields();
       } else {
-        setMessage(data.error || "An error occurred.");
+        setMessage("The user with the provided phone number already exists");
+        clearFields();
       }
       setIsMessageVisible(true);
     } catch (error) {
